@@ -2,7 +2,6 @@
 
 A clean and flexible docker environment for your wordpress project.
 
-This configuration is using the following images from [DockerHub](https://hub.docker.com/):
 * __Webserver__: php:7.2-apache
 * __Database__: mysql + phpmyadmin
 * __Cache__: redis
