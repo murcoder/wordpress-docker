@@ -1,0 +1,85 @@
+  version: '3'
+
+  services:
+
+    # The Application - PHP 7.2
+    webserver:
+      build:
+        context: .
+        dockerfile: app.dockerfile
+      container_name: webserver
+      links:
+        - mysql
+      working_dir: /var/www/html
+      volumes:
+        - ../:/var/www/html
+        - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
+        - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
+        - ${LOG_DIR-./logs/apache2}:/var/log/apache2
+      ports:
+        - "8080:80"
+        - "443:443"
+      environment:
+        DB_PORT: "3306"
+        DB_HOST: "database"
+        WORDPRESS_DB_HOST: mysql:3306
+        WORDPRESS_DB_USER: wordpress
+        WORDPRESS_DB_PASSWORD: wordpress
+        XDEBUG_CONFIG: "remote_host=docker.for.win.host.internal remote_enable=1"
+        #XDEBUG_CONFIG: "remote_host=docker.for.mac.host.internal remote_enable=1"
+      networks:
+        - wpsite
+
+    # Database - mySQL
+    mysql:
+      image: mysql
+      container_name: mysql
+      restart: unless-stopped
+      command: --default-authentication-plugin=mysql_native_password --innodb-use-native-aio=0
+      environment:
+        MYSQL_ROOT_PASSWORD: password
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: wordpress
+        MYSQL_PASSWORD: wordpress
+      ports:
+        - '9906:3306'
+      volumes:
+        - mysqldata:/var/lib/mysql/
+      networks:
+        - wpsite
+
+    # Database GUI - phpmyadmin
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: 'phpmyadmin'
+      links:
+        - mysql
+      environment:
+        PMA_HOST: mysql
+        PMA_PORT: 3306
+        MYSQL_ROOT_PASSWORD: password
+      ports:
+        - '8081:80'
+      volumes:
+        - /sessions
+      networks:
+        - wpsite
+
+    # Cache - redis
+    redis:
+      image: redis:latest
+      container_name: redis
+      command: redis-server --requirepass yourpassword
+      ports:
+        - '7000:7000'
+      networks:
+        - wpsite
+
+  #Volumes
+  volumes:
+    mysqldata:
+      driver: local #save DB data after docker restart
+
+  #Networks
+  networks:
+    wpsite:

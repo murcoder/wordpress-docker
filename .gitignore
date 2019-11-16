@@ -1,0 +1,6 @@
+.idea
+.DS_STORE
+ssl/*.crt
+ssl/*.key
+ssl/id_rsa
+ssl/id_rsa.pub

@@ -1,0 +1,14 @@
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.29.0.4. Set the 'ServerName' directive globally to suppress this message
+[Sat Nov 16 13:16:20.335377 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.24 configured -- resuming normal operations
+[Sat Nov 16 13:16:20.335412 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Nov 16 13:17:17.961522 2019] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.30.0.4. Set the 'ServerName' directive globally to suppress this message
+[Sat Nov 16 13:17:35.266570 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.24 configured -- resuming normal operations
+[Sat Nov 16 13:17:35.268103 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Nov 16 13:17:56.170417 2019] [autoindex:error] [pid 17] [client 172.30.0.1:51118] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sat Nov 16 13:18:13.008920 2019] [autoindex:error] [pid 16] [client 172.30.0.1:51134] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sat Nov 16 13:18:31.122755 2019] [autoindex:error] [pid 18] [client 172.30.0.1:51142] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Sat Nov 16 13:21:14.778961 2019] [mpm_prefork:notice] [pid 1] AH00170: caught SIGWINCH, shutting down gracefully
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.31.0.5. Set the 'ServerName' directive globally to suppress this message
+[Sat Nov 16 13:27:15.776482 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.38 (Debian) PHP/7.2.24 configured -- resuming normal operations
+[Sat Nov 16 13:27:15.776851 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
